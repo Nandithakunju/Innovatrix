@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123d70">
+  <title>KTU Result Radar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Result Radar home">
+      <div class="brand-logo">RR</div>
+      <div>
+        <h1>Result Radar</h1>
+        <p>KTU Student Result Tracker</p>
+      </div>
+    </a>
+    <a class="official-link"
+       href="https://www.ktu.edu.in/Exam/result"
+       target="_blank" rel="noopener noreferrer">
+      Official KTU ↗
+    </a>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <span class="eyebrow">STUDENT DASHBOARD</span>
+      <h2>Stay ahead of your results.</h2>
+      <p>Track semester results in one place. No more repeated checking.</p>
+      <div class="demo-warning">
+        <span>ⓘ</span>
+        <span><strong>Competition demo:</strong> Statuses are sample data,
+        not verified official KTU results.</span>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Result summary">
+      <article class="stat-card">
+        <span class="stat-icon">▦</span>
+        <p>Total semesters</p>
+        <strong id="totalCount">8</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon green">✓</span>
+        <p>Published</p>
+        <strong id="publishedCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon orange">◷</span>
+        <p>Awaited</p>
+        <strong id="awaitedCount">8</strong>
+      </article>
+    </section>
+
+    <section class="results-section">
+      <div class="section-heading">
+        <div>
+          <h2>Semester results</h2>
+          <p>Choose a semester to check its status.</p>
+        </div>
+        <span class="live-label">
+          <span class="live-dot"></span> Demo tracker
+        </span>
+      </div>
+
+      <div class="toolbar">
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search"
+                 placeholder="Search semesters..."
+                 aria-label="Search semesters">
+        </label>
+
+        <label class="filter-label" for="statusFilter">Status</label>
+        <select id="statusFilter">
+          <option value="all">All statuses</option>
+          <option value="Published">Published</option>
+          <option value="Awaited">Awaited</option>
+        </select>
+      </div>
+
+      <div id="semesterGrid" class="semester-grid"></div>
+      <p id="emptyMessage" class="empty-message" hidden>
+        No semesters match your search.
+      </p>
+    </section>
+
+    <section class="demo-panel">
+      <div>
+        <span class="eyebrow">PRESENTATION MODE</span>
+        <h2>Test the notification</h2>
+        <p>Simulate a newly published result to demonstrate your idea.</p>
+      </div>
+      <div class="demo-controls">
+        <label for="demoSemester">Choose semester</label>
+        <select id="demoSemester">
+          <option value="S1">Semester 1</option>
+          <option value="S2">Semester 2</option>
+          <option value="S3">Semester 3</option>
+          <option value="S4">Semester 4</option>
+          <option value="S5">Semester 5</option>
+          <option value="S6">Semester 6</option>
+          <option value="S7">Semester 7</option>
+          <option value="S8">Semester 8</option>
+        </select>
+        <button id="simulateBtn" class="primary-btn">
+          Simulate publication
+        </button>
+        <button id="resetBtn" class="secondary-btn">
+          Reset demo
+        </button>
+      </div>
+    </section>
+
+    <section class="notice">
+      <strong>How to verify a result</strong>
+      <p>Use the official university result page for confirmed results.
+         This prototype does not access student records or verify
+         result announcements automatically.</p>
+      <a href="https://www.ktu.edu.in/Exam/result"
+         target="_blank" rel="noopener noreferrer">
+        Open official examination results →
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>KTU Result Radar · Student innovation prototype</p>
+    <p>Independent demo — not an official KTU service.</p>
+  </footer>
+
+  <!-- Notification dialog -->
+  <div id="notificationOverlay" class="overlay"
+       role="presentation" hidden>
+    <section class="notification" role="dialog"
+             aria-modal="true" aria-labelledby="popupTitle">
+      <button id="closePopup" class="close-btn"
+              aria-label="Close notification">×</button>
+      <div class="bell-circle">🔔</div>
+      <span class="success-label">RESULT UPDATE · DEMO</span>
+      <h2 id="popupTitle">Result published!</h2>
+      <p id="popupMessage">
+        A semester result has been marked as published in this demo.
+      </p>
+      <a class="primary-btn popup-link"
+         href="https://www.ktu.edu.in/Exam/result"
+         target="_blank" rel="noopener noreferrer">
+        View Official KTU Results ↗
+      </a>
+      <button id="dismissPopup" class="text-btn">Maybe later</button>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
